@@ -6,7 +6,8 @@
   "author": "pengyajun <pyj92055@163.com>",
   "scripts": {
     "dev": "vuepress dev docs",
-    "build": "vuepress build docs"
+    "build": "vuepress build docs",
+    "deploy": "sh build/deploy.sh"
   },
   "license": "MIT",
   "devDependencies": {
