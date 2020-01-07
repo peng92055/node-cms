@@ -5,8 +5,8 @@
   "repository": "https://github.com/peng92055/node-cms",
   "author": "pengyajun <pyj92055@163.com>",
   "scripts": {
-    "dev": "vuepress dev ./docs",
-    "build": "vuepress build ./docs",
+    "dev": "vuepress dev docs",
+    "build": "vuepress build docs",
     "deploy": "sh build/deploy.sh"
   },
   "license": "MIT",
