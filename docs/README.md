@@ -1,6 +1,4 @@
-### CMS项目安装和启动
-
-# CMS项目安装和启动
+# 全栈CMS项目安装和启动
 
 ## 初始化数据库
  
@@ -22,29 +20,3 @@ npm start
 或
 
 nodemon server/server.js
-
-
-
-## build 流程
-
-### 开发环境
-```
-grunt build
-```
-
-### 测试环境 --
-```
-grunt build:test
-```
-
-### 生产环境 --
-```
-grunt build:production
-```
-
-
-## fix bug
-
-### 浏览器控制台出现 mOxie is not defined
-
-client/app/bower_components/pulpload/.bower.json文件里添加："main": "js/plupload.full.min.js",
