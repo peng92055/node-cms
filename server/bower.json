@@ -1,0 +1,29 @@
+{
+  "name": "client-app",
+  "version": "1.0.0",
+  "dependencies": {
+    "angular": "~1.5.8",
+    "angular-animate": "~1.5.8",
+    "angular-resource": "^1.5.8",
+    "angular-sanitize": "~1.5.8",
+    "angular-ui-router": "latest",
+    "es5-shim": "~3.1.0",
+    "jquery": "~2.1.4",
+    "json3": "~3.3.2",
+    "angular-cookies": "^1.5.8",
+    "ng-dialog": "^0.6.4",
+    "moment": "latest",
+    "moment-timezone": "latest",
+    "angular-drag-and-drop-lists": "~1.4.0",
+    "swiper": "^3.4.0",
+    "jquery-ui": "^1.12.1",
+    "jquery.ui.touch-punch": "^0.3.0",
+    "gsap": "^1.19.0",
+    "jquery_lazyload": "jquery.lazyload#^1.9.7"
+  },
+  "resolutions": {
+    "jquery": "~2.1.1",
+    "moment": "~2.10.3",
+    "plupload": "^2.1.9"
+  }
+}

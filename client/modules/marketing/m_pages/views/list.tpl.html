@@ -1,0 +1,93 @@
+<div class="panel panel-default">
+  <div class="panel-heading">
+    营销页 <span class="sub-title">(共{{ setting.currentView == 'enablePages' ? enablePages.pagination.total : disablePages.pagination.total}}个)</span>
+    <span class="pull-right btn-group">
+      <button class="btn-warning btn btn-xs Mr-10" ng-click="setting.isMulti=!setting.isMulti" ng-hide="setting.isMulti" type="button" ng-if="setting.currentView == 'enablePages'">批量发布</button>
+      <button class="btn-primary btn btn-xs Mr-10" ng-show="setting.isMulti" type="button" ng-model="isAllSelected" ng-click="toggleAll()">全选</button>
+      <button class="btn-warning btn btn-xs Mr-10" ng-show="setting.isMulti" type="button" ng-click="batchPublish()">发布</button>
+      <button class="btn-danger btn btn-xs Mr-10" ng-show="setting.isMulti" type="button" ng-click="setting.isMulti=!setting.isMulti">取消</button>
+      <a href="" class="btn btn-xs btn-success" ui-sref="^.add()">
+        <i class="fa fa-plus"></i>
+      </a>
+    </span>
+  </div>
+  <div class='list-group'>
+    <uib-tabset class="nav-tabs-custom">
+      <uib-tab heading="启用中" ng-click="changeView('enablePages')">
+        <div ng-if="enablePages.pages.length > 0">
+          <div ng-repeat="item in enablePages.pages" ng-if="item.status != 2" class="list-group-item">
+            <span class="pull-right btn-group">
+              <a href="" class="btn btn-warning Mr-10" ng-click="publish(item)" ng-if="item.document_status == '1'">
+                发布 <i class="fa fa-send"></i>
+              </a>
+              <a href="" class="btn btn-primary Mr-10" ui-sref="^.edit({id: item.id})">
+                编辑 <i class="fa fa-pencil"></i>
+              </a>
+              <a href="" class="btn btn-success Mr-10" ng-click="copy(item)">
+                复制 <i class="fa fa-copy"></i>
+              </a>
+              <a href="" class="btn btn-default Mr-10" ng-click="disable(item)">
+                停用 <i class="fa fa-ban"></i>
+              </a>
+            </span>
+            <h4 class="list-group-item-heading">
+              <input type="checkbox" name="multipublishCheck" ng-show="setting.isMulti" ng-model="item.selected" ng-change="itemToggled()">
+              <a href="" ui-sref="^.view({id: item.id})">{{item.name}}</a>
+              <span class="C-red" ng-if="item.document_status == '1'">{{item.publish_url ? '(有更新)' : '(未发布)'}}</span>
+              <a href="{{APP_CONFIG.webSystemApi}}/m/marketing/template/{{item.id}}" class="btn btn-success Ml-10" target="_blank" uib-tooltip="预览更新的数据生成的页面" ng-if="item.document_status == '1'">预览 <i class="fa fa-eye"></i></a>
+              <a href="{{APP_CONFIG.staticUrl}}/m/marketing/{{item.url}}" class="btn btn-default Ml-10" target="_blank" uib-tooltip="查看已经在线上发布好的页面" ng-if="item.publish_url">查看 <i class="fa fa-smile-o"></i></a>
+            </h4>
+            <p class="list-group-item-text">
+              <span class="status">【{{item.status | pageStatus}}】</span> {{item.startDate | date:'yyyy-MM-dd HH:mm:ss'}}
+              <span ng-if="item.endDate"> - {{item.endDate | date:'yyyy-MM-dd HH:mm:ss'}}</span>
+            </p>
+            <p class="list-group-item-text Mt-10" ng-if="item.publish_url">
+              <span>【线上链接】</span>
+              <span>{{item.online_url}}<button class="btn btn-xs btn-success Ml-10" clip-action="copy" clip-model="item.online_url" clip-alert='true' clip-success-text="已经复制到剪贴板!" clipboard>复制链接</button></span>
+            </p>
+          </div>
+          <div class="text-center">
+            <ul uib-pagination total-items="enablePages.pagination.total" ng-model="enablePages.pagination.currentPage" ng-click="pagination()" items-per-page="enablePages.pagination.limit" previous-text="< 上一页" next-text="下一页 >"></ul>
+          </div>
+        </div>
+        <div ng-show="!enablePages.pages.length" class="list-group-item">
+          <h4 class="list-group-item-heading">
+            当前没有已启用活动
+          </h4>
+          <p class="list-group-item-text" translate>Click <a href="" ui-sref="^.add">here</a> to add a event!</p>
+        </div>
+      </uib-tab>
+      <uib-tab heading="停用中" ng-click="changeView('disablePages')">
+        <div ng-if="disablePages.pages.length > 0">
+          <div ng-repeat="item in disablePages.pages" ng-if="item.status == 2" class="list-group-item">
+            <span class="pull-right btn-group">
+              <a href="" class="btn btn-success Mr-10" ng-click="enable(item)">
+                启用 <i class="fa fa-check"></i>
+              </a>
+            </span>
+            <h4 class="list-group-item-heading">
+              <a href="" ui-sref="^.view({id: item.id})">{{item.name}}</a>
+              <a href="{{APP_CONFIG.webSystemApi}}/m/marketing/template/{{item.id}}" class="btn btn-success Ml-10" target="_blank" uib-tooltip="预览更新的数据生成的页面" ng-if="item.document_status == '1'">预览 <i class="fa fa-eye"></i></a>
+            </h4>
+            <p class="list-group-item-text">
+              <span class="status">【{{item.status | pageStatus}}】</span> {{item.startDate | date:'yyyy-MM-dd HH:mm:ss'}}
+              <span ng-if="item.endDate"> - {{item.endDate | date:'yyyy-MM-dd HH:mm:ss'}}</span>
+            </p>
+          </div>
+          <div class="text-center">
+            <ul uib-pagination total-items="disablePages.pagination.total" ng-model="disablePages.pagination.currentPage" ng-click="pagination()" items-per-page="disablePages.pagination.limit" previous-text="< 上一页" next-text="下一页 >"></ul>
+          </div>
+        </div>
+        <div ng-show="!disablePages.pages.length" class="list-group-item">
+          <h4 class="list-group-item-heading">
+            当前没有已停用活动
+          </h4>
+          <p class="list-group-item-text" translate>Click <a href="" ui-sref="^.add">here</a> to add a event!</p>
+        </div>
+      </uib-tab>
+    </uib-tabset>
+    <!--     <pagination total-items="total" ng-model="page" ng-click="query()" items-per-page="limit" previous-text="上一页" next-text="下一页" max-size="5" first-text="<<" last-text=">>" boundary-links="true" rotate="false"></pagination> -->
+    
+    
+  </div>
+</div>

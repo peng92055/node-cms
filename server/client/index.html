@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en-us" class="no-js">
+  <head>
+  
+    <meta charset="utf-8">
+    <title> EXE </title>
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+    <!-- #FAVICONS -->
+    <link rel="shortcut icon" href="assets/img/favicon/favicon.ico" type="image/x-icon">
+    
+    <!-- build:rev assets/css/vendor.min.css -->
+    <link rel="stylesheet" type="text/css" href="assets/css/vendor.css">
+    <!-- endbuild -->
+
+    <!-- build:rev assets/css/exe-experience.min.css -->
+    <link rel="stylesheet" type="text/css" href="assets/css/common.css">
+    <link rel="stylesheet" type="text/css" href="assets/css/gallery.css">
+    <!-- endbuild -->
+  </head>
+
+  <body>
+
+    <!-- ui-view container -->
+    <div ui-view="root"></div>
+    <!--[if lt IE 7]>
+      <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
+    <![endif]-->
+
+		<!-- Use for production after building the project with gulp --> 
+		<!-- build:rev build/vendor.min.js -->
+        <script src="vendor/vendor.js"></script>  
+		<script src="vendor/vendor_gsap.js"></script>
+		<!-- endbuild -->
+
+		<!-- build:rev build/exe-exprience.min.js -->
+		<script src="vendor/exe.experience.js"></script>
+		<!-- endbuild -->
+
+    </body>
+  
+</html>

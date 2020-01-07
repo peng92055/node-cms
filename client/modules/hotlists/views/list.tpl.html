@@ -1,0 +1,42 @@
+<div class="panel panel-default">
+  <div class="panel-heading">
+    排行榜 <span class="sub-title">(共{{ctrl.hotlists.length}}个)</span>
+    <span class="pull-right btn-group">
+      <a href="" class="btn btn-xs btn-success" ui-sref="^.add()">
+        <i class="fa fa-plus"></i>
+      </a>
+    </span>
+  </div>
+
+  <div class='list-group'>
+    <div ng-repeat="item in ctrl.hotlists" class="list-group-item">
+     <span class="pull-right btn-group">
+      <a href="" class="btn btn-xs btn-default" ui-sref="^.edit({id: item.id})">
+        <i class="fa fa-pencil"></i>
+      </a>
+      <a href="" class="btn btn-xs btn-danger" ui-sref="^.delete({id: item.id})">
+        <i class="fa fa-trash-o"></i>
+      </a>
+    </span>
+      <h4 class="list-group-item-heading">
+        <a href="" ui-sref="^.view({id: item.id})">{{item.name}}</a>
+        <a href="{{ENV.mUrl}}{{item.url}}" target="_blank">查看</a>
+      </h4>
+
+      <p class="list-group-item-text">
+        <span class="status">【{{item.status | eventStatus}}】</span>
+        {{item.startDate | date:'medium'}}
+        <span ng-if="item.endDate"> - {{item.endDate | date:'medium'}}</span>
+      </p>
+    </div>
+
+    <div ng-show="!ctrl.hotlists.length" class="list-group-item">
+      <h4 class="list-group-item-heading">
+        当前没有榜单
+      </h4>
+
+      <p class="list-group-item-text">点击 <a href="" ui-sref="^.add">这里</a> 添加一个榜单!</p>
+    </div>
+  </div>
+
+</div>

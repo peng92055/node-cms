@@ -1,0 +1,49 @@
+<header id="header" class="animated fadeInDown">
+  <div id="logo-group">
+    <span id="logo"> <img src="assets/img/logo.png" alt="EXE CMS"> </span>
+  </div>
+</header>
+<div id="main" role="main" class="animated fadeInDown">
+  <div id="content" class="container">
+    <div class="row">
+      <div class="col-xs-12 col-sm-12 col-md-offset-3 col-md-6 col-lg-offset-4 col-lg-4">
+        <div class="well no-padding">
+          <form ng-submit="doLogin()" method="post" id="login-form" class="smart-form">
+            <header>
+              登录
+            </header>
+            <fieldset>
+              <section>
+                <label class="label">邮箱</label>
+                <div class="input"> <i class="icon-append fa fa-user"></i>
+                  <input type="text" name="email" ng-model="credentials.email">
+                  <b class="tooltip tooltip-top-right"><i class="fa fa-user txt-color-teal"></i>请输入邮箱</b>
+                </div>
+              </section>
+              <section>
+                <label class="label">密码</label>
+                <div class="input"> <i class="icon-append fa fa-lock"></i>
+                  <input type="password" name="password" ng-model="credentials.password">
+                  <b class="tooltip tooltip-top-right"><i class="fa fa-lock txt-color-teal"></i>输入你的密码</b>
+                </div>
+                <div class="note">
+                  <a ui-sref="forgotPassword">忘记密码?</a>
+                </div>
+              </section>
+              <section>
+                <label class="checkbox">
+                  <input type="checkbox" name="credentials.remember" checked>
+                  <i></i>自动登录</label>
+              </section>
+            </fieldset>
+            <footer>
+              <button type="submit" class="btn btn-primary">
+                确认
+              </button>
+            </footer>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

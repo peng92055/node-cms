@@ -1,0 +1,25 @@
+[{
+	"id": 1,
+	"name": "青少年",
+	"thumb":"/client/assets/img/experience/theme1.png"
+},{
+	"id": 2,
+	"name": "新生代",
+	"thumb":"/client/assets/img/experience/theme2.png"
+},{
+	"id": 3,
+	"name": "欧美时尚",
+	"thumb":"/client/assets/img/experience/theme3.png"
+},{
+	"id": 4,
+	"name": "日韩潮流",
+	"thumb":"/client/assets/img/experience/theme4.png"
+},{
+	"id": 5,
+	"name": "品质生活",
+	"thumb":"/client/assets/img/experience/theme5.png"
+},{
+	"id": 6,
+	"name": "职场达人",
+	"thumb":"/client/assets/img/experience/theme5.png"
+}]

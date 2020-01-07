@@ -1,0 +1,30 @@
+[{
+	"id": 1,
+	"name": "VG9705_C3_003767",
+	"thumb": "/client/assets/img/experience/glasses_1_1.jpg",
+	"side_view": "/client/assets/img/experience/glasses_1_2.jpg",
+	"poster": [
+		"/client/assets/img/experience/glasses/9705_C3_003767/glasses_1_detail1.jpg",
+		"/client/assets/img/experience/glasses/9705_C3_003767/glasses_1_detail2.jpg"
+	],
+	"series_id": [1,2,3,4,5,6,7,8,9,10,11,12,13]
+},{
+	"id": 2,
+	"name": "VG9718_C1_003763",
+	"thumb": "/client/assets/img/experience/glasses_2_1.jpg",
+	"side_view": "/client/assets/img/experience/glasses_2_2.jpg",
+	"poster": [
+		"/client/assets/img/experience/glasses/9718_C1_003763/glasses_2_detail1.jpg",
+		"/client/assets/img/experience/glasses/9718_C1_003763/glasses_2_detail2.jpg"
+	],
+	"series_id": [1,2,3,4,5,6,7,8,9,10,11,12,13]
+},{
+	"id": 3,
+	"name": "VG9723_C1_003765",
+	"thumb": "/client/assets/img/experience/glasses_3_1.jpg",
+	"side_view": "/client/assets/img/experience/glasses_3_2.jpg",
+	"poster": [
+		"/client/assets/img/experience/glasses_poster3.jpg"
+	],
+	"series_id": [1,2,3,4,5,6,7,8,9,10,11,12,13]
+}]

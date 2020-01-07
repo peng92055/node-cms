@@ -1,0 +1,26 @@
+<div class="gallery-glasses clearfix">
+	<div class="header clearfix">
+		<div class="btn-back" ng-click="back();">
+			<div class="arrow-wrap">
+				<span class="top arrow"></span>
+				<span class="bottom arrow"></span>
+			</div>
+			返回
+		</div>
+		<!-- <div ng-click="doFullScreen()" style="float:right;">进入全屏</div> -->
+		<div class="title">{{args.pageTitle}}</div>
+	</div>
+	<div class="sidebar">
+		<div ng-if="!args.loading" class="glasses-wrapper">
+			<ul class="glasses-list" >
+				<li class="glasses-item" ng-click="selectGlasses(glasses,$event);" ng-class="{'selected': args.curGlasses.id == glasses.id || compareGlasses.left[0].id == glasses.id || compareGlasses.right[0].id == glasses.id}" ng-repeat="glasses in glassesList"
+				>
+					<img class="thumb dragged-item" data-glassesid="{{glasses}}" draggable="false"  ng-src="{{glasses.thumb}}">
+					<img class="thumb side-view" draggable="false" ng-src="{{glasses.side_view}}">
+					<i class="select-icon"></i>
+				</li>
+			</ul>
+		</div>
+	</div>
+	<div ui-view="detail" class="detail"></div>
+	</div>

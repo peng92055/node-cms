@@ -1,0 +1,165 @@
+<form name="form" class="form-marketing-pages">
+  <div class="panel panel-default">
+    <div class="panel-heading">
+      <a href="" ui-sref="^.list" class="btn btn-xs btn-default"><i class="fa fa-arrow-left"></i></a>
+      <span ng-show="!page.id">添加新 page</span>
+      <span ng-show="page.id">编辑 page</span>
+      <span class="pull-right btn-group">
+        <a href="javascript:void(0)" class="btn btn-xs btn-danger" ng-click="delete(page)">
+          删除 <i class="fa fa-trash-o"></i>
+        </a>
+    </span>
+    </div>
+    <div class="panel-body">
+      <div class="row">
+        <div class="col-xs-12 col-md-12 col-lg-12">
+          <uib-tabset class="nav-tabs-custom">
+            <uib-tab heading="一般配置">
+              <div class="normal-options">
+                <formly-form model="page" fields="formFields" options="formOptions"></formly-form>
+                <h5 class="wx-splite-line">微信分享相关配置</h5>
+                <formly-form model="page.wx_share_info" fields="wxFields" options="formOptions"></formly-form>
+              </div>
+            </uib-tab>
+            <uib-tab heading="页面组成">
+              <div class="tab-content-wrap clearfix">
+                <div class="blocks-wrap col-xs-12 col-sm-12 col-md-12 col-lg-6">
+                  <div class="block-list">
+                    <div class="block-item" ng-repeat="(index,block) in page.block_array" ng-if="page.block_array.length>0">
+                      <div class="block-item-header clearfix">
+                        <div class="header-desc" ng-click="openBlock(block,page.block_array)">
+                          <span class="tag-color" style="background: {{block.bg_color}}"></span>
+                          <span class="block-id">Block_{{index+1}}</span>
+                          <span class="block-name"><input type="text" ng-model="block.opts.name" placeholder="{{BlockTranslate[block.type]}}"></span>
+                        </div>
+                        <div class="header-ctrls">
+                          <a href="javascript:void(0);" class="btn-ctrl" ng-click="openBlockBgEditer(index, block);">
+                            <i class="fa fa-edit"></i>
+                          </a>
+                          <a href="javascript:void(0);" class="btn-ctrl" ng-click="removeBlockFormBlocks(index,page.block_array)">
+                            <i class="fa fa-times"></i>
+                          </a>
+                          <a href="javascript:void(0);" class="btn-ctrl" ng-click="moveArrayEle(index,index-1,page.block_array)" ng-if="index != 0">
+                            <i class="fa fa-arrow-up"></i>
+                          </a>
+                          <a href="javascript:void(0);" class="btn-ctrl" ng-click="moveArrayEle(index,index+1,page.block_array)" ng-if="index != page.block_array.length-1">
+                            <i class="fa fa-arrow-down"></i>
+                          </a>
+                          <a href="javascript:void(0);" class="btn-ctrl" ng-click="openBlock(block,page.block_array)">
+                            <i class="fa fa-chevron-right" ng-class="{'rotate': block.open}"></i>
+                          </a>
+                        </div>
+                      </div>
+                      <div class="block-item-content-wrap" uib-collapse="!block.open">
+                        <div class="block-item-content">
+                          <common-template options="block.opts" ng-if="block.type == 'common_template'"></common-template>
+                          <common-head options="block.opts" ng-if="block.type == 'common_head'"></common-head>
+                          <store-intro options="block.opts" ng-if="block.type == 'store_intro_slider'"></store-intro>
+                          <bottom-bar options="block.opts" ng-if="block.type == 'bottom_bar'"></bottom-bar>
+                          <store-intro-map options="block.opts" ng-if="block.type == 'store_intro_map'"></store-intro-map>
+                          <div ng-if="block.type == 'contact'">暂时不支持自定义样式，背景色固定为白色，上下距离为25px和60px。</div>
+                        </div>
+                      </div>
+                    </div>
+                    <p class="text-center" ng-if="!page.block_array || page.block_array.length<1">请增加block</p>
+                  </div>
+                  <div class="block-btns-wrap">
+                    <button class="btn btn-default" ng-click="resetBlocks();">恢复初始状态</button>
+                    <button class="btn btn-primary" ng-click="addBlock();">增加Block模块</button>
+                  </div>
+                  <button href="javascript:void(0);" class="btn-preview" ng-click="preview()" ng-disabled="form.$invalid"><span>预览>></span></button>
+                </div>
+                <div class="preview-wrap col-xs-12 col-sm-12 col-md-12 col-lg-5 text-center">
+                  <div class="iphone-wrap">
+                    <iframe width=320 height=518 frameborder=0 scrolling=auto ng-src="{{previewUrl}}" id="previewIframe"></iframe>
+                  </div>
+                </div>
+              </div>
+              <p class="tips Mt-20">说明：页面是由多个Block组成的，合理拆分Block可以进行一些简单的操作。</p>
+            </uib-tab>
+            <uib-tab heading="页面行为">
+              <table class="table table-bordered table-hover text-center">
+                <thead>
+                  <tr>
+                    <td colspan="5">主要按钮行为</td>
+                  </tr>
+                  <tr>
+                    <td class="col-sm-1 col-md-1">方案</td>
+                    <td class="col-sm-3 col-md-4">行为</td>
+                    <td class="col-sm-5 col-md-5">参数</td>
+                    <td class="col-sm-2 col-md-2">概率</td>
+                    <td class="col-sm-1 col-md-1">操作</td>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr ng-repeat="(index,action) in page.primary_actions">
+                    <td>{{index+1}}</td>
+                    <td>
+                      <select class="form-control" ng-model="action.type" ng-change="watchAppointmentAction()">
+                        <option value="appointment_dialog" ng-disabled="args.disableAppointmentAction">浮层预约(仅能选择一次)</option>
+                        <option value="redirect">跳转</option>
+                      </select>
+                    </td>
+                    <td ng-if="action.type == 'redirect'">
+                      <input class="form-control" type="text" ng-model="action.redirect_url" required>
+                    </td>
+                    <td ng-if="action.type == 'appointment_dialog'">
+                      <button class="btn btn-primary" ng-click="editAppointmentDialogOpts(action);">配置预约浮层参数</button>
+                    </td>
+                    <td>
+                      <select class="form-control" ng-model="action.percentage" ng-options="key as value for (key , value) in PercentageReference" ng-change="calcActionTotalPercentage();"></select>
+                    </td>
+                    <td>
+                      <button class="btn btn-default" ng-click="page.primary_actions.splice(index,1);calcActionTotalPercentage();watchAppointmentAction();">删除</button>
+                    </td>
+                  </tr>
+                </tbody>
+                <tfoot>
+                  <tr>
+                    <td colspan="3">
+                      <button class="btn btn-info" ng-click="page.primary_actions.push({'type':'redirect','percentage':'0.0625','redirect_url':'/appointment'});calcActionTotalPercentage();watchAppointmentAction();">增加方案</button>
+                    </td>
+                    <td colspan="2">
+                      <span uib-tooltip="当总概率低于100%时，最后一组方案会自动覆盖剩下的概率；当高于100%时，高出的部分无效。">当前概率总计<i class="fa fa-question-circle"></i></span>：{{args.actionTotalPercentage}}
+                    </td>
+                  </tr>
+                </tfoot>
+              </table>
+            </uib-tab>
+            <uib-tab heading="操作记录" ng-if="pageRecord && pageRecord.length > 0">
+              <table class="table table-bordered table-hover text-center">
+                <thead>
+                  <tr>
+                    <td colspan="5">操作记录</td>
+                  </tr>
+                  <tr>
+                    <td class="col-sm-1 col-md-1">条数</td>
+                    <td class="col-sm-1 col-md-1">类型</td>
+                    <td class="col-sm-4 col-md-4">操作人邮箱</td>
+                    <td class="col-sm-4 col-md-4">操作人用户名</td>
+                    <td class="col-sm-2 col-md-2">时间</td>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr ng-repeat="(index,record) in pageRecord" ng-class="{'bg-success':record.modify_type == 'publish'}">
+                    <td>{{index+1}}</td>
+                    <td>{{record.modify_type}}</td>
+                    <td>{{record.user_email}}</td>
+                    <td>{{record.user_name}}</td>
+                    <td>{{record.modify_date | date:'yyyy-MM-dd HH:mm:ss'}}</td>
+                  </tr>
+                </tbody>
+              </table>
+            </uib-tab>
+          </uib-tabset>
+        </div>
+      </div>
+    </div>
+    <div class="panel-footer">
+      <button type="submit" class="btn btn-primary btn-success" ng-click="submit()" ng-disabled="form.$invalid">
+        Submit
+      </button>
+      <button type="button" class="btn btn-default" ng-click="formOptions.resetModel()">Reset</button>
+    </div>
+  </div>
+</form>

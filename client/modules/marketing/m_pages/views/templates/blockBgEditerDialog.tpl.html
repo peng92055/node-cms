@@ -1,0 +1,39 @@
+<div class="block-bg-editer-dialog">
+	<div class="modal-header text-center">
+	  <h3 class="modal-title clearfix">背景设置</h3>
+	</div>
+	<div class="modal-body">
+		<div class="padding-setting-wrapper form-group clearfix">
+			<span class="col-sm-2 control-label">内边距</span>
+			<div class="setting-container col-sm-10">
+				<label>上 <input type="text" class="text-center" ng-model="args.blockBg.padding[0]">  px</label>
+				<label>下 <input type="text" class="text-center" ng-model="args.blockBg.padding[1]">  px</label>
+				<label>左 <input type="text" class="text-center" ng-model="args.blockBg.padding[2]">  px</label>
+				<label>右 <input type="text" class="text-center" ng-model="args.blockBg.padding[3]">  px</label>
+			</div>
+		</div>
+		<div class="bg-setting-wrapper form-group clearfix">
+			<span class="col-sm-2 control-label">背景</span>
+			<div class="setting-container col-sm-10">
+				<div class="btn-setting-wrap setting-item clearfix">
+				  <a href="javascript:void(0)" class="btn-add col-sm-6" ng-click="addBgImg();"><i class="fa fa-plus"></i> 背景图</a>
+				  <a href="javascript:void(0)" class="btn-add col-sm-6" ng-click="addBgColor();"><i class="fa fa-plus"></i> 背景颜色</a>
+				</div>
+				<div class="bg-img-item setting-item clearfix" ng-if="args.blockBg.bg.img || setting.uploadImg">
+					<div class="col-sm-11">
+						<qiniu-input image="args.blockBg.bg.img" ng-model="args.blockBg.bg.img" required="true"></qiniu-input>
+					</div>
+					<a href="javascript:void(0)" ng-click="removeBgImgItem();" class="btn-remove-bg"><i class="fa fa-times"></i></a>
+				</div>
+				<div class="bg-color-item setting-item" ng-if="args.blockBg.bg.color">
+					<color-picker color="args.blockBg.bg.color" placeholder="背景色,默认透明" class="col-sm-11"></color-picker>
+					<a href="javascript:void(0)" ng-click="removeBgColor();"><i class="fa fa-times"></i></a>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="modal-footer">
+		<button class='btn btn-warning' ng-click="cancel();">取 消</button>
+		<button class='btn btn-primary' ng-click="ok();">保 存</button>
+	</div>
+</div>

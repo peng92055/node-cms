@@ -1,0 +1,110 @@
+<div class="block-common-head">
+	<div class="form-horizontal">
+	  <div class="form-group">
+	    <label class="col-sm-3 control-label" uib-tooltip="背景图尺寸建议750*950，高度最好在950到1200之间。最下方留有16%*高度的空白区。">主背景图 *<i class="fa fa-question-circle"></i></label>
+	    <div class="col-sm-9">
+	      <qiniu-input image="options.image_bg" required="true"></qiniu-input>
+	    </div>
+	  </div>
+	  <div class="form-group">
+	    <label class="col-sm-3 control-label" uib-tooltip="副背景图比主背景图层级高,副背景图与主背景图大小建议一致，选填">副背景图<i class="fa fa-question-circle"></i></label>
+	    <div class="col-sm-9">
+	      <qiniu-input image="options.image_bg_cover" required="false"></qiniu-input>
+	    </div>
+	  </div>
+	  <div class="form-group">
+	    <label class="col-sm-3 control-label" uib-tooltip="倒计时固定在按钮上方，暂不支持位置自定义，选填">倒计时类型<i class="fa fa-question-circle"></i></label>
+	    <div class="col-sm-9">
+	      <select class="form-control" ng-model="options.countdown.type" ng-change="updateCountType()">
+	        <option value="">无</option>
+	        <option value="circle">循环(暂仅支持一周固定循环)</option>
+	        <option value="end">截止日期</option>
+	      </select>
+	    </div>
+	  </div>
+	  <div class="form-group" ng-if="options.countdown.type == 'end'">
+	  	<label class="col-sm-3 control-label" uib-tooltip="时间格式：2016/12/31 08:00">倒计截止日期*<i class="fa fa-question-circle"></i></label>
+	  	<div class="col-sm-9 input-group col-date-wrap">
+				<input type="text" class="form-control" uib-datepicker-popup ng-model="options.countdown.end_time" is-open="date.open" datepicker-options="dateOptions" ng-required="true" close-text="Close" />
+        <span class="input-group-btn">
+          <button type="button" class="btn btn-default" ng-click="openDate()"><i class="glyphicon glyphicon-calendar"></i></button>
+        </span>
+	  	</div>
+	  </div>
+	  <div class="form-group" ng-if="options.countdown && options.countdown.type">
+	    <label class="col-xs-3 control-label">倒计时标题</label>
+	    <div class="col-sm-9">
+	      <input type="text" class="form-control" ng-model="options.countdown.title" placeholder="请输入倒计时标题">
+	    </div>
+	  </div>
+	  <div class="form-group" ng-if="options.countdown && options.countdown.type">
+	    <label class="col-xs-3 control-label">倒计时样式</label>
+	    <div class="col-sm-9">
+	      <select class="form-control" ng-model="options.countdown.theme">
+	      	<option value="default">默认（黑色时钟字，白色背景）</option>
+	      	<option value="white-clock-black-bg">白色时钟字，黑色背景</option>
+	      </select>
+	    </div>
+	  </div>
+	  <div class="form-group">
+	    <label for="bch-input-btn-text" class="col-xs-3 control-label">按钮文案 *</label>
+	    <div class="col-sm-9">
+	      <input type="text" name="form_input_btn_text_sss" class="form-control" id="bch-input-btn-text" ng-model="options.btn_text" placeholder="请输入按钮文案" required>
+	    </div>
+	  </div>
+	  <div class="form-group">
+	    <label class="col-sm-3 control-label">按钮样式 *</label>
+	    <div class="col-sm-9">
+		    <div class="input-group col-sm-8">
+		    	<div class="input-group-addon">背景色</div>
+		      <color-picker color="options.btn_bg_color" placeholder="背景色,默认透明"></color-picker>
+		    </div>
+		    <div class="input-group col-sm-8 Mt-10">
+		    	<div class="input-group-addon">文案色</div>
+		    	<color-picker color="options.btn_color" placeholder="文案颜色,默认#fb1c1f" defaultcolor="#fb1c1f"></color-picker>
+		    </div>
+		    <div class="input-group col-sm-8 Mt-10">
+		    	<div class="input-group-addon">边框色</div>
+		    	<color-picker color="options.btn_border_color" placeholder="边框色,默认#fb1c1f" defaultcolor="#fb1c1f"></color-picker>
+		    </div>
+	    </div>
+	  </div>
+	  <div class="form-group">
+	    <label class="col-sm-3 control-label" uib-tooltip="gif尺寸建议60*40，选填">按钮两边gif<i class="fa fa-question-circle"></i></label>
+	    <div class="col-sm-9">
+	      <qiniu-input image="options.btn_animate_img" required="false"></qiniu-input>
+	    </div>
+	  </div>
+	  <div class="form-group">
+	    <label for="bch-input-subtitle-type" class="col-sm-3 control-label" uib-tooltip="按钮副标题固定在按钮下方，暂不支持位置自定义，选填">按钮副标题类型<i class="fa fa-question-circle"></i></label>
+	    <div class="col-sm-9" id="bch-input-subtitle-type">
+	      <select class="form-control" ng-model="options.subtitle_type" ng-change="updateSubtitleType()">
+	        <option value="">无</option>
+	        <option value="single">单行</option>
+	        <option value="complex">区分前后缀，中间由页面人数组成</option>
+	      </select>
+	    </div>
+	  </div>
+	  <div class="form-group" ng-if="options.subtitle_type == 'single'">
+	    <label for="bch-input-subtitle" class="col-sm-3 control-label">按钮副标题 *</label>
+	    <div class="col-sm-9">
+	      <input type="text" class="form-control" id="bch-input-subtitle" ng-model="options.subtitle" placeholder="请输入按钮副标题" required>
+	    </div>
+	  </div>
+	  <div class="form-group" ng-if="options.subtitle_type == 'complex'">
+	    <label class="col-sm-3 control-label">按钮副标题前后缀 *</label>
+	    <div class="col-sm-4">
+	      <input type="text" class="form-control" ng-model="options.subtitle_prefix" placeholder="请输入副标题前缀" required>
+	    </div>
+	    <div class="col-sm-5">
+	      <input type="text" class="form-control" ng-model="options.subtitle_suffix" placeholder="请输入副标题后缀" required>
+	    </div>
+	  </div>
+	  <div class="form-group">
+	    <label for="bch-input-subtitle-color" class="col-sm-3 control-label">按钮副标题颜色</label>
+	    <div class="col-sm-9">
+	      <color-picker color="options.subtitle_color" placeholder="请输入按钮副标题颜色值,默认为#FFFFFF" defaultcolor="#ffffff"></color-picker>
+	    </div>
+	  </div>
+	</div>
+</div>

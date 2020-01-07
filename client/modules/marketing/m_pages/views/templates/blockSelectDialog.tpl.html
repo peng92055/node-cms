@@ -1,0 +1,24 @@
+<div class="block-select-dialog">
+	<div class="modal-header text-center">
+	  <h3 class="modal-title clearfix">模板选择<button class='btn btn-primary Fl-r' ng-click='ok()' tabindex="1">选 择</button></h3>
+	</div>
+	<div class="modal-body">
+		<a href="javascript:void(0);" class="block-select-item" ng-class="{'select':args.current == block.type,'disabled':block.disabled}" ng-repeat="block in BlockSelectList" ng-click="selectBlock(block)">
+			<div class="block-title">
+				<span>{{BlockTranslate[block.type]}}</span><span class="tips" ng-if="block.onlyone">(仅能使用一次)</span><span ng-if="block.disabled" class="exist-tips">已存在</span>
+			</div>
+			<div class="block-content clearfix">
+				<div class="block-desc">
+					{{block.desc}}
+				</div>
+				<div class="thunmnail-wrap">
+					<img ng-src="{{block.thumbnail}}">
+				</div>
+			</div>
+		</a>
+	</div>
+	<div class="modal-footer">
+		<button class='btn btn-warning' ng-click='cancel()' tabindex="3">取 消</button>
+		<button class='btn btn-primary' ng-click='ok()' tabindex="1">选 择</button>
+	</div>
+</div>

@@ -1,0 +1,75 @@
+<div class="appointment-dialog-modal">
+	<div class="modal-header text-center">
+	    <h3 class="modal-title">预约浮层参数配置</h3>
+	</div>
+	<div class='modal-body clearfix'>
+		<div class="dialog-first-wrap clearfix">
+			<div class="dialog-title-wrap"><span class="dialog-title">一级浮层</span></div>
+			<div class="col-sm-5 col-md-5 item-title">
+				<div class="input-group">
+					<div class="input-group-addon">浮层标题</div>
+		    	<color-picker color="opts.first.title_color" class="D-b W-90" placeholder="标题颜色"></color-picker>
+				</div>
+				<div class="input-group Mt-20 Mb-10">
+					<div class="input-group-addon">按钮文案</div>
+		    	<color-picker color="opts.first.btn_text_color" class="D-b W-90" placeholder="按钮文案色"></color-picker>
+				</div>
+				<div class="input-group">
+					<div class="input-group-addon">按钮背景</div>
+		    	<color-picker color="opts.first.btn_bg_color" class="D-b W-90" placeholder="按钮背景色"></color-picker>
+				</div>
+			</div>
+			<div class="col-sm-7 col-md-7 dialog-content dialog-first">
+				<input class="form-control input-text" type="text" ng-model="opts.first.title" style="color: {{opts.first.title_color}}">
+				<input class="form-control" type="text" disabled="disabled" placeholder="手机号">
+				<div class="btn-wrap" style="background: {{opts.first.btn_bg_color}}">
+					<input class="form-control input-text input-btn-text" type="text" ng-model="opts.first.btn_text" style="color: {{opts.first.btn_text_color}}">
+				</div>
+			</div>
+		</div>
+		<div class="checkbox">
+      <label>
+        <input type="checkbox" ng-model="args.needSecond"> 是否需要二级浮层
+      </label>
+    </div>
+    <div class="dialog-second-wrap clearfix" ng-show="args.needSecond">
+    	<div class="dialog-title-wrap"><span class="dialog-title">二级浮层</span></div>
+    	<div class="col-sm-5 col-md-5 item-title">
+				<div class="input-group">
+					<div class="input-group-addon">浮层标题</div>
+		    	<color-picker color="opts.second.title_color" class="D-b W-90" placeholder="标题颜色"></color-picker>
+				</div>
+    		<p class="desc">strong标签内元素会自动加粗加红</p>
+				<div class="input-group btn-text-wrap">
+					<div class="input-group-addon">按钮文案</div>
+		    	<color-picker color="opts.second.btn_text_color" class="D-b W-90" placeholder="按钮文案色"></color-picker>
+				</div>
+				<div class="input-group Mt-10">
+					<div class="input-group-addon">按钮背景</div>
+		    	<color-picker color="opts.second.btn_bg_color" class="D-b W-90" placeholder="按钮背景色"></color-picker>
+				</div>
+    	</div>
+    	<div class="col-sm-7 col-md-7 dialog-content dialog-second">
+    		<input class="form-control input-text" type="text" ng-model="opts.second.title" style="color: {{opts.second.title_color}}">
+    		<textarea class="form-control" rows="4" ng-model="opts.second.desc"></textarea>
+    		<div class="btn-wrap" style="background: {{opts.second.btn_bg_color}}">
+    			<input class="form-control input-text input-btn-text" type="text" ng-model="opts.second.btn_text" style="color: {{opts.second.btn_text_color}}">
+    		</div>
+    	</div>
+    </div>
+		<div class="confirm-wrap Mt-20 clearfix">
+			<label class="W-100">
+				<span>短信文案方案</span>
+				<select class="form-control" ng-model="opts.confirm_args.sms_template" ng-options="key as value for (key,value) in SMSTYPE">
+				</select>
+			</label>
+		</div>
+	</div>
+
+	<div class='modal-footer text-center'>
+	  <button class='btn btn-default' ng-click='getDefaultOpts()' tabindex="2">获取默认参数</button>
+	  <button class='btn btn-warning' ng-click='cancel()' tabindex="3">取 消</button>
+	  <button class='btn btn-primary' ng-click='ok()' tabindex="1">确 定</button>
+	</div>
+
+</div>

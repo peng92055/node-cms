@@ -1,0 +1,41 @@
+<div class="panel panel-default">
+  <div class="panel-heading">
+    <!--中秋节游戏数据-->
+    海贼王游戏数据（起始时间：2016年12月28日17:40:00）
+    <span class="pull-right btn-group">
+      <a href="" class="btn btn-xs btn-success" ng-click="refresh()">
+        <i class="fa fa-refresh"></i>
+      </a>
+    </span>
+  </div>
+  <div class="panel-body">
+    <div class="row">
+      <div class="form-group col-md-4">
+        <label class="control-label">
+          选择日期
+        </label>
+        <select class="form-control" ng-model="args.selectDate" ng-change="refresh();" ng-options="date.label as date.value for date in selectDate">
+          <option value="">全部</option>
+        </select>
+      </div>
+      <div class="col-md-12">
+        <div class="table-responsive">
+          <table class="table table-bordered table-striped table-hover">
+            <thead>
+              <tr>
+                <th>事件类型</th>
+                <th>数据</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr ng-repeat="key in dataToDisplay" ng-if="data[key]">
+                <td>{{data[key].event_label}}</td>
+                <td>{{data[key].event_count}}</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

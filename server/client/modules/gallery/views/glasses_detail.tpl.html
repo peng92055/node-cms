@@ -1,0 +1,16 @@
+<div class="glasses-detail-wrap">
+	<div ng-if="!args.curGlasses" ng-click="selectGlasses(glassesList[0])" class="series-poster-wrap">
+		<img ng-src="{{seriesInfo.detail}}">
+	</div>
+	<div ng-if="args.curGlasses" class="glasses-poster-wrap">
+		<div class="loading-theme-1 glasses-detail-loading">
+			<div class="bounce1"></div>
+		  <div class="bounce2"></div>
+		  <div class="bounce3"></div>
+		</div>
+		<div class="poster" id="glassesDetail">
+			<img class="lazy glasses-poster" data-original="{{poster}}" repeat-finish ng-repeat="poster in args.curGlasses.poster">
+		</div>
+		<i class="icon-compare" ng-click="linkToCompare()"></i>
+	</div>
+</div>

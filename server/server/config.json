@@ -1,0 +1,48 @@
+{
+  "restApiRoot": "/api",
+  "host": "0.0.0.0",
+  "port": 3000,
+  "url": "http://127.0.0.1:3000",
+  "cookieSecret": "F1FEE670-3C72-11E4-916C-0800200C9DDA66",
+  "remoting": {
+    "context": false,
+    "rest": {
+      "normalizeHttpPath": false,
+      "xml": false
+    },
+    "json": {
+      "strict": false,
+      "limit": "1000kb"
+    },
+    "urlencoded": {
+      "extended": true,
+      "limit": "1000kb"
+    },
+    "cors": false,
+    "errorHandler": {
+      "disableStackTrace": false
+    }
+  },
+  "legacyExplorer": false,
+  "jfweb_server": "http://127.0.0.1:3100",
+  "store_server": "http://127.0.0.1/~chenxinwei/freecart",
+  "m_url": "http://127.0.0.1:3100/m",
+  "pc_url": "http://127.0.0.1:3100",
+  "web_api": "http://127.0.0.1:3100/webapi",
+  "web_system_api": "http://127.0.0.1:3100/webapi/system",
+  "client_path": "client/app",
+  "dist": "dist",
+  "image_server": "http://7xpw1c.com1.z0.glb.clouddn.com/",
+  "wechat": {
+    "appId": "wx2d1b6a48a334104a",
+    "appSecret": "c6a534a72d01b978c3183b82afe9525a"
+  },
+  "store_auth": {
+    "username": "admin",
+    "password": "FUIWyeoERJwDChiXkGVDVfKo4uZ0bI2hukWqwe5vONqQKS7CJTcnIwJUb76dFOs1WxicX5lJQvzYYeGKLFyDaUgwGz3Pt8Qx474z3OXA70Ow7PFRoSgefAohvjDnHw1zxO0lYPWnxEZIzdJiyfYEP8TDLbVF8njndYtNsECYL0VnmuVLYPQyyMtJex5pHjNBpCfYguCfnHK4qJgkwqzIhZ5fBgw3bsoCQU7DgkUQs2LuDBZqzLJg3CnUkbPmLoPD"
+  },
+  "qiniu": {
+    "AK": "QwzBG0rrX-sFVvFft2A2vhqNVAnM1Nrg8PGf3VX4",
+    "SK": "95j_UlL2_PrSYw2q-5Z2R8e29B3V39PXIFZ5IEcf"
+  }
+}

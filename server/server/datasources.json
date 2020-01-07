@@ -1,0 +1,22 @@
+{
+  "db": {
+    "name": "db",
+    "connector": "memory"
+  },
+  "mysqlDs": {
+    "host": "127.0.0.1",
+    "port": 3306,
+    "database": "jfcms",
+    "username": "root",
+    "password": "Actiview1840",
+    "name": "mysqlDs",
+    "connector": "mysql"
+  },
+  "mongoDs": {
+    "name": "mongoDs",
+    "host": "127.0.0.1",
+    "port": 27017,
+    "database": "jfcms",
+    "connector": "mongodb"
+  }
+}

@@ -1,0 +1,38 @@
+<form name="form">
+  <div class="panel panel-default  form-event-pages">
+    <div class="panel-heading">
+      <a href="" ui-sref="^.list" class="btn btn-xs btn-default"><i class="fa fa-arrow-left"></i></a>
+      <span ng-show="!ctrl.event.id">添加新事件</span>
+      <span ng-show="ctrl.event.id">编辑事件</span>
+    </div>
+    <div class="panel-body">
+      <div class="row">
+        <div class="col-md-6 col-lg-6">
+          <formly-form model="ctrl.event" fields="ctrl.formFields" options="ctrl.formOptions"></formly-form>
+        </div>
+        <div class="col-md-6 col-lg-6 dnd-list-wrap">
+          <label class="control-label">门店列表排序
+              <a href="javascript:void(0)" ng-class="{'active': selectedAll}" ng-click="ctrl.selectStores('all')">全选</a> /<a href="javascript:void(0)" ng-class="{'active': selectedNone}" ng-click="ctrl.selectStores('none')"> 全不选</a>
+          </label>
+          <ul dnd-list="stores">
+            <li ng-repeat="store in stores"
+              dnd-draggable="store"
+              dnd-moved="stores.splice($index, 1)"
+              dnd-effect-allowed="move"
+              dnd-selected="store.selected = !store.selected;checkSelected();"
+              ng-class="{'selected': store.selected}"
+              >
+              {{store.name}}
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <div class="panel-footer">
+      <button type="submit" class="btn btn-primary btn-success" ng-click="ctrl.submit()" ng-disabled="form.$invalid">
+        Submit
+      </button>
+      <button type="button" class="btn btn-default" ng-click="ctrl.formOptions.resetModel()">Reset</button>
+    </div>
+  </div>
+</form>

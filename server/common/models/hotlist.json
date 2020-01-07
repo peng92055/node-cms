@@ -1,0 +1,73 @@
+{
+  "name": "Hotlist",
+  "plural": "hotlists",
+  "base": "AppModel",
+  "properties": {
+    "name": {
+      "type": "string",
+      "required": true
+    },
+    "description": {
+      "type": "string"
+    },
+    "startDate": {
+      "type": "date"
+    },
+    "endDate": {
+      "type": "date"
+    },
+    "title": {
+      "type": "String"
+    },
+    "wx_title": {
+      "type": "String"
+    },
+    "wx_desc": {
+      "type": "String"
+    },
+    "img_share": {
+      "type": "String"
+    },
+    "img_banner": {
+      "type": "String"
+    },
+    "status": {
+      "type": "Number"
+    },
+    "group_id": {
+      "type": "String"
+    },
+    "products": {
+      "type": "Object"
+    }
+  },
+  "validations": [],
+  "relations": {},
+  "acls": [
+    {
+      "accessType": "*",
+      "principalType": "ROLE",
+      "principalId": "admin",
+      "permission": "ALLOW"
+    },
+    {
+      "accessType": "WRITE",
+      "principalType": "ROLE",
+      "principalId": "$unauthenticated",
+      "permission": "DENY"
+    },
+    {
+      "accessType": "READ",
+      "principalType": "ROLE",
+      "principalId": "$unauthenticated",
+      "permission": "ALLOW"
+    },
+    {
+      "accessType": "*",
+      "principalType": "ROLE",
+      "principalId": "$owner",
+      "permission": "ALLOW"
+    }
+  ],
+  "methods": {}
+}

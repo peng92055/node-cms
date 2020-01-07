@@ -1,0 +1,24 @@
+{
+  "db": {
+    "name": "db",
+    "connector": "memory"
+  },
+  "mysqlDs":{
+    "host": "120.55.72.72",
+    "port": 43306,
+    "database": "jfcms",
+    "username": "root",
+    "password": "passw0rd",
+    "name": "mysqlDs",
+    "connector": "mysql"
+  },
+  "mongoDs": {
+    "name": "mongoDs",
+    "host": "127.0.0.1",
+    "port": 27717,
+    "database": "jfcms",
+    "connector": "mongodb",
+    "username": "cmsAdmin",
+    "password": "90Yu-=[]"
+  }
+}

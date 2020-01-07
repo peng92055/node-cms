@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en-us" class="no-js">
+  <head>
+  
+    <meta charset="utf-8">
+    <title> EXE </title>
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+    <!-- #CSS Links -->
+    <!-- Basic Styles -->
+
+    <!-- build:css(./) assets/css/vendor.min.css -->
+    <link rel="stylesheet" type="text/css" media="screen" href="EXEAdmin/assets/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" media="screen" href="EXEAdmin/assets/css/font-awesome.min.css">
+    <!-- endbuild -->
+
+    <!-- SmartAdmin Styles : Caution! DO NOT change the order -->
+    <!-- build:css(./) assets/css/common.min.css -->
+    <link rel="stylesheet" type="text/css" media="screen" href="EXEAdmin/assets/css/smartadmin-production-plugins.min.css">
+    <link rel="stylesheet" type="text/css" media="screen" href="EXEAdmin/assets/css/smartadmin-production.min.css">
+    <link rel="stylesheet" type="text/css" media="screen" href="EXEAdmin/assets/css/bootstrap-colorpicker.min.css">
+    <link rel="stylesheet" type="text/css" media="screen" href="EXEAdmin/assets/css/smartadmin-skins.min.css">
+    <link rel="stylesheet" type="text/css" media="screen" href="EXEAdmin/assets/css/smartadmin-angular.css">
+    <link rel="stylesheet" type="text/css" media="screen" href="EXEAdmin/assets/css/ngDialog.min.css">
+    <link rel="stylesheet" type="text/css" media="screen" href="EXEAdmin/assets/css/sweetalert2.min.css">
+    <link rel="stylesheet" type="text/css" media="screen" href="EXEAdmin/assets/css/exe-admin.css">
+    <!-- endbuild -->
+  
+    <!-- build:css assets/css/exe-cms.min.css -->
+    <link rel="stylesheet" type="text/css" media="screen" href="assets/css/exe-cms.css"> 
+    <!-- endbuild -->
+
+    <!-- #FAVICONS -->
+    <link rel="shortcut icon" href="assets/img/favicon/favicon.ico" type="image/x-icon">
+
+  </head>
+
+  <body data-smart-device-detect
+    data-smart-fast-click
+    data-smart-layout
+    data-smart-page-title="EXE">
+
+    <!-- ui-view container -->
+
+    <div data-ui-view="root"  data-autoscroll="false"></div>
+
+    <!--[if lt IE 7]>
+      <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
+    <![endif]-->
+
+    <!--[if lt IE 9]>
+      <script src="plugin/es5-shim/es5-shim.js"></script>
+      <script src="plugin/json3/lib/json3.min.js"></script>
+    <![endif]-->
+
+    <!-- Use for production after building the project with gulp --> 
+    <!-- build:rev(./) build/vendor.min.js -->
+    <script src="EXEAdmin/build/vendor.js"></script>  
+    <script src="EXEAdmin/build/vendor.ui.js"></script> 
+    <!-- endbuild -->
+
+    <!-- build:rev(./) build/EXEAdmin.min.js -->  
+    <script src="EXEAdmin/build/EXEAdmin.js"></script>
+    <!-- endbuild -->
+
+    <!-- build:rev build/exe-cms.min.js -->
+    <script src="build/lb-services.js"></script>
+    <script src="build/exe-cms.js"></script>
+    <!-- endbuild -->
+
+
+    </body>
+  
+</html>

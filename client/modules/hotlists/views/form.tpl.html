@@ -1,0 +1,54 @@
+<form name="form">
+  <div class="panel panel-default">
+    <div class="panel-heading">
+      <a href="" ui-sref="^.list" class="btn btn-xs btn-default"><i class="fa fa-arrow-left"></i></a>
+      <span ng-show="!hotlist.id">添加排行榜</span>
+      <span ng-show="hotlist.id">编辑排行榜</span>
+    </div>
+    <div class="panel-body">
+      <div class="row">
+        <div class="col-md-6 col-lg-6">
+          <formly-form model="hotlist" fields="formFields" options="formOptions"></formly-form>
+        </div>
+        <div class="col-md-6 col-lg-6">
+          <h4 class="Ta-c">商品信息</h4>
+          <div class="form-group">
+             <label for="product_ids">商品 id</label>
+             <div class="row">
+               <div class="col-sm-10">
+                 <input type="text" class="form-control" id="product_ids" ng-model="hotlist.product_ids" placeholder="商品 id">
+               </div>
+               <div class="col-sm-2">
+                 <button type="button" class="btn btn-primary" ng-click="updateProducts()">更新</button>
+               </div>
+             </div>
+           </div>
+          <table class="table table-bordered table-hover Mt-10 Tl-fix">
+            <thead>
+              <th style="width: 50px;">位置</th>
+              <th style="width: 60px;">id</th>
+              <th style="width: 150px;">图片</th>
+              <th>名称</th>
+              <th style="width: 60px">热度(销量)</th>
+            </thead>
+            <tbody>
+              <tr ng-repeat="product in hotlist.products">
+                <td>{{$index + 1}}</td>
+                <td>{{product.product_id}}</td>
+                <td><img ng-src="{{product.img_url}}"></td>
+                <td>{{product.name}}</td>
+                <td>{{product.hotrate}}</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+    <div class="panel-footer">
+      <button type="submit" class="btn btn-primary btn-success" ng-click="submit()" ng-disabled="form.$invalid">
+        Submit
+      </button>
+      <button type="button" class="btn btn-default" ng-click="formOptions.resetModel()">Reset</button>
+    </div>
+  </div>
+</form>

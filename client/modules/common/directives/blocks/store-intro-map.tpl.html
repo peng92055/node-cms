@@ -1,0 +1,27 @@
+<div class="block-store-intro-map">
+  <div class="form-horizontal">
+  	<div class="form-group">
+  		<label class="control-label col-xs-3">
+  			是否展开评论 *
+  		</label>
+  		<div class="radio-group col-xs-9">
+  			<label class="radio-inline">
+			  	<input type="radio" ng-model="options.open_reviews" name="openReviews" ng-value='true' required> 是
+				</label>
+				<label class="radio-inline">
+				  <input type="radio" ng-model="options.open_reviews" name="openReviews"  ng-value='false'  required> 否
+				</label>
+  		</div>
+  	</div>
+	  <div class="form-group">
+	  	<label class="col-xs-3 control-label">选择模块风格 *</label>
+	  	<div class="col-sm-9">
+			  <select class="form-control" ng-model="options.theme">
+			  <option value="" >默认风格</option>
+			    <option value="cold" >冷淡风格</option>
+			    <option value="hot" >热情风格</option>
+			  </select>
+	  	</div>
+	  </div>
+  </div>
+</div>

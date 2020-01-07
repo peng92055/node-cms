@@ -1,0 +1,12 @@
+{
+  "chunks": {
+    "vendor": [
+      "swiper",
+      "ng-dialog"
+    ]
+  },
+  "paths": {
+    "swiper": "bower_components/swiper/dist/css/swiper.min.css",
+    "ng-dialog": "bower_components/ng-dialog/css/ngDialog.min.css"
+  }
+}

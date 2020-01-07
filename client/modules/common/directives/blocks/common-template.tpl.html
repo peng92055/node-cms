@@ -1,0 +1,57 @@
+<div class="block-common-template text-left">
+	<div class="D-ib Mb-10" uib-tooltip="规 则 :同行(row)内每一个元素(colspan)的宽高比最好完全一致，否则同行内元素高度会以最高的元素为准。">栅格(columns)配置图片大小规则<i class="fa fa-question-circle"></i></div>
+	<div class="rows-wrap">
+		<div class="Mb-10 Bd-1 Bc-gray" ng-repeat="(index,row) in options.rows">
+			<div class="Pl-10 Bgc-gray clearfix">Row_{{index+1}}
+				<a href="javascript:void(0);" class="btn btn-xs Fl-r" ng-click="options.rows.splice(index,1)"><i class="fa fa-times"></i></a>
+				<div class="D-ib Fl-r Bdl-1 Bdr-1 Bc-white Pl-5 Pr-5 clearfix">
+					<span class="">columns:</span>
+					<select class="" ng-model="row.columns" ng-change="changeColumns(row,row.columns);">
+						<option value="1">1格</option>
+						<option value="2">2格</option>
+						<option value="3">3格</option>
+						<option value="4">4格</option>
+						<option value="5">5格</option>
+					</select>
+				</div>
+			</div>
+			<div class="row-content clearfix">
+				<div class="col-item col-item-{{row.columns}}" ng-repeat="col in row.images">
+					<qiniu-input-image image="col.image_url"></qiniu-input-image>
+					<button uib-popover-template="dynamicPopover.templateUrl" popover-title="{{dynamicPopover.title}}" popover-trigger="'outsideClick'" type="button" class="btn btn-xs btn-default">元素行为</button>
+			    <script type="text/ng-template" id="eleActionPopover.tpl.html">
+			    	<div class="ele-popover-wrap clearfix">
+			       	<div class="form-group">
+			       		<select class="form-control" ng-model="col.opts.type">
+			       			<option value="normal">无</option>
+			       			<option value="primary_action">主要行为</option>
+			       			<option value="redirect">跳转</option>
+			       			<option value="scroll">滚动</option>
+			       			<option value="product_combine_show">展示商品详情</option>
+			       		</select>
+			       	</div>
+			       	<div class="form-group">
+			       		<input class="form-control" type="text" ng-model="col.opts.redirect_url" ng-if="col.opts.type == 'redirect'" placeholder="跳转路径(请用http开头全路径)" required>
+			       		<div class="input-group" ng-if="col.opts.type == 'scroll'">
+			            <div class="input-group-addon">Block_</div>
+			            <input class="form-control" type="text" ng-model="col.opts.scroll_to_block_index" maxlength="2" placeholder="滚动到第几个block" onkeyup="this.value=this.value.replace(/\D/g,'')" onafterpaste="this.value=this.value.replace(/\D/g,'')" required>
+			          </div>
+								<div ng-if="col.opts.type == 'product_combine_show'">
+									<div class="input-group">
+										<div class="input-group-addon">商 品 ID*</div>
+										<input class="form-control" type="text" ng-model="col.opts.product_id" maxlength="20" placeholder="当前商品ID" required>
+									</div>
+									<div class="input-group Mt-10">
+										<div class="input-group-addon">关 联 ID*</div>
+										<input class="form-control" type="text" ng-model="col.opts.product_combine_ids" placeholder="英文逗号分隔(请包含当前商品ID)" required>
+									</div>
+								</div>
+			       	</div>
+			    	</div>
+			    </script>
+				</div>
+			</div>			
+		</div>
+		<button class="btn btn-primary Mt-10" ng-click="addRow()">增加Row元素</button>
+	</div>
+</div>

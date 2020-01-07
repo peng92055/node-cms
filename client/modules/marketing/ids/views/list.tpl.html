@@ -1,0 +1,42 @@
+<div class="panel panel-default">
+  <div class="panel-heading">
+    Marketing ID <span class="sub-title">(共{{ctrl.total}}个)
+    <span class="pull-right btn-group">
+      <a href="" class="btn btn-xs btn-success" ui-sref="^.add()">
+        <i class="fa fa-plus"></i>
+      </a>
+    </span>
+  </div>
+
+  <div class='list-group'>
+    <div ng-repeat="item in ctrl.marketings" class="list-group-item">
+     <span class="pull-right btn-group">
+      <a href="" class="btn btn-xs btn-default" ui-sref="^.edit({id: item.marketing_id})">
+        <i class="fa fa-pencil"></i>
+      </a>
+<!--       <a href="" class="btn btn-xs btn-danger" ui-sref="^.delete({id: item.marketing_id})">
+        <i class="fa fa-trash-o"></i>
+      </a> -->
+    </span>
+      <h4 class="list-group-item-heading">
+        <a href="" ui-sref="^.view({id: item.marketing_id})">{{item.name}}</a>
+        <span class="status">【{{item.marketing_id}}】</span> 
+      </h4>
+
+      <p class="list-group-item-text">
+        {{item.start_time | date:'yyyy-MM-dd HH:mm:ss'}}
+        <span ng-if="item.end_time"> - {{item.end_time | date:'yyyy-MM-dd HH:mm:ss'}}</span>
+      </p>
+    </div>
+    <ul uib-pagination total-items="ctrl.total" ng-model="ctrl.page" ng-click="ctrl.query()" items-per-page="ctrl.limit" previous-text="上一页" next-text="下一页" max-size="5" first-text="<<" last-text=">>" boundary-links="true" rotate="false"></ul>
+
+    <div ng-show="!ctrl.marketings.length" class="list-group-item">
+      <h4 class="list-group-item-heading">
+        当前没有数据
+      </h4>
+
+      <p class="list-group-item-text">点击 <a href="" ui-sref="^.add">这里</a> 来添加一个新的Marketing Id!</p>
+    </div>
+  </div>
+
+</div>

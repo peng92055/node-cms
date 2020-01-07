@@ -1,0 +1,32 @@
+<div class="gallery-series clearfix">
+	<div class="series-wrap">
+		<ul class="series-list show clearfix" id="seriesList"  ng-class="{'auto-center':series.length<6, 'auto-middle': series.length < 3}">
+			<li class="item-serie" ng-click="linkToSeries(serie.id, $event);$event.stopPropagation();" ng-repeat="serie in series" repeat-series-finish>
+				<img ng-src="{{serie.poster}}">
+				<img class="item-shadow" draggable="false" src="/client/assets/img/experience/series-shadow.png">
+			</li>
+		</ul>
+		<div class="loading-wrap loading-theme-1" id="loading">
+		  <div class="bounce1"></div>
+		  <div class="bounce2"></div>
+		  <div class="bounce3"></div>
+		</div>
+		<img src="/client/assets/img/experience/icon-arrow.png" class="icon-arrow" ng-show="series && series.length > 9">
+	</div>
+
+	<div class="theme-list-wrap">
+		<div class="stage-wrap">
+			<img src="/client/assets/img/experience/stage.png" draggable="false">
+		</div>
+
+		<div class="stage-wheel-wrap" id="stageWheel">
+			<ul class="theme-list">
+				<li class="theme-item theme-item-{{index}}" data-themeid="{{theme.id}}" ng-class="{'active':args.currActive == index}" ng-repeat="(index,theme) in themes" style="transform:translate({{theme.x}}px,{{theme.y}}px) rotate({{theme.r}}deg)">
+					<div>{{theme.name}} ·</div>
+				</li>
+			</ul>
+		</div>
+	</div>
+</div>
+
+

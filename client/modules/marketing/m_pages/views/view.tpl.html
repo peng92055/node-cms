@@ -1,0 +1,14 @@
+<div class="panel panel-default">
+  <div class="panel-heading">
+    <a href="" ui-sref="^.list" class="btn btn-xs btn-default"><i class="fa fa-arrow-left"></i></a>
+    {{ctrl.page.title}}
+    <span class="pull-right btn-group">
+      <a href="" class="btn btn-xs btn-default Mr-10" ui-sref="^.edit({id: ctrl.page.id})">
+        <i class="fa fa-pencil"></i>
+      </a>
+    </span>
+  </div>
+  <div class="panel-body">
+    <pre>{{ctrl.page | json}}</pre>
+  </div>
+</div>

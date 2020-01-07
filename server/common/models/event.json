@@ -1,0 +1,88 @@
+{
+  "name": "Event",
+  "plural": "events",
+  "base": "AppModel",
+  "properties": {
+    "name": {
+      "type": "string",
+      "required": true
+    },
+    "description": {
+      "type": "string"
+    },
+    "startDate": {
+      "type": "date"
+    },
+    "endDate": {
+      "type": "date"
+    },
+    "url": {
+      "type": "String"
+    },
+    "title": {
+      "type": "String"
+    },
+    "wx_title": {
+      "type": "String"
+    },
+    "wx_desc": {
+      "type": "String"
+    },
+    "img_share": {
+      "type": "String"
+    },
+    "img_banner": {
+      "type": "String"
+    },
+    "img_logo": {
+      "type": "String"
+    },
+    "img_qrcode": {
+      "type": "String"
+    },
+    "img_rules": {
+      "type": "String"
+    },
+    "marketing_id": {
+      "type": "String"
+    },
+    "status": {
+      "type": "Number"
+    },
+    "withAds": {
+      "type": "Boolean"
+    },
+    "stores_order": {
+      "type": "String"
+    }
+  },
+  "validations": [],
+  "relations": {},
+  "acls": [
+    {
+      "accessType": "*",
+      "principalType": "ROLE",
+      "principalId": "admin",
+      "permission": "ALLOW"
+    },
+    {
+      "accessType": "WRITE",
+      "principalType": "ROLE",
+      "principalId": "$unauthenticated",
+      "permission": "DENY"
+    },
+    {
+      "accessType": "READ",
+      "principalType": "ROLE",
+      "principalId": "$unauthenticated",
+      "permission": "ALLOW"
+    },
+    {
+      "accessType": "*",
+      "principalType": "ROLE",
+      "principalId": "$owner",
+      "permission": "ALLOW"
+    }
+  ],
+  "methods": {}
+}

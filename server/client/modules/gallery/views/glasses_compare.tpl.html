@@ -1,0 +1,16 @@
+<div class="glasses-compare-wrap">
+	<ul class="compare-area" data-index="{{$index}}"  ng-repeat="compare in compareGlasses">
+		<li ng-repeat="glasses in compare" class="compare-item">
+			<img class="poster" ng-src="{{poster}}" ng-repeat="poster in glasses.poster">
+		</li>
+		<li class="compare-placeholder" ng-class="{'remove':compare.length>0}">
+			<div class="placeholder-wrap">
+				<div class="content">
+					<img class="img-plus" ng-src="/client/assets/img/experience/icon-plus.png">
+					<div class="tips">拖入眼镜进行对比</div>	
+				</div>
+			</div>
+    </li>
+    <i class="icon-exit-compare" ng-click="linkToSeries(compare)" ng-class="{'active':compare.length>0,'first-icon':$index==0}"></i>
+	</ul>
+</div>

@@ -1,0 +1,81 @@
+{
+  "_meta": {
+    "sources": [
+      "loopback/common/models",
+      "loopback/server/models",
+      "../common/models",
+      "./models",
+      "../node_modules/loopback-component-passport/lib/models"
+    ],
+    "mixins": [
+      "loopback/common/mixins",
+      "loopback/server/mixins",
+      "../common/mixins",
+      "./mixins"
+    ]
+  },
+  "User": {
+    "dataSource": "mysqlDs",
+    "public": false
+  },
+  "accessToken": {
+    "dataSource": "mysqlDs",
+    "public": true
+  },
+  "userCredential": {
+    "dataSource": "mysqlDs",
+    "public": true
+  },
+  "userIdentity": {
+    "dataSource": "mysqlDs",
+    "public": true
+  },
+  "ACL": {
+    "dataSource": "mysqlDs",
+    "public": false
+  },
+  "RoleMapping": {
+    "dataSource": "mysqlDs",
+    "public": true
+  },
+  "Role": {
+    "dataSource": "mysqlDs",
+    "public": true
+  },
+  "AppModel": {
+    "dataSource": "mysqlDs",
+    "public": false
+  },
+  "Setting": {
+    "dataSource": "mysqlDs",
+    "public": true
+  },
+  "AuthProvider": {
+    "dataSource": "mysqlDs",
+    "public": true
+  },
+  "user": {
+    "dataSource": "mysqlDs",
+    "public": true
+  },
+  "Meta": {
+    "dataSource": "mysqlDs",
+    "public": true
+  },
+  "Event": {
+    "dataSource": "mysqlDs",
+    "public": true
+  },
+  "Hotlist": {
+    "dataSource": "mongoDs",
+    "public": true
+  },
+  "MarketingPages": {
+    "dataSource": "mongoDs",
+    "public": true
+  },
+  "MarketingPagesRecord": {
+    "dataSource": "mongoDs",
+    "public": true
+  }
+}

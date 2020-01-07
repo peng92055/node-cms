@@ -1,0 +1,56 @@
+<div class="block-bottom-bar">
+	<div class="form-horizontal">
+	  <div class="form-group">
+	    <label for="bbb-input-title" class="col-xs-3 col-md-2 control-label">标题 *</label>
+	    <div class="col-xs-9 col-md-10">
+	      <input type="text" class="form-control" id="bbb-input-title" ng-model="options.title" placeholder="请输入标题" required>
+	    </div>
+	  </div>
+	  <div class="form-group">
+	    <label for="bbb-input-subtitle-type" class="col-xs-3 col-md-2 control-label">副标题类型</label>
+	    <div class="col-xs-9 col-md-10" id="bbb-input-subtitle-type">
+	      <select class="form-control" ng-model="options.subtitle_type" ng-change="updateSubtitleType()">
+	        <option value="">无</option>
+	        <option value="single">单行</option>
+	        <option value="complex">区分前后缀，中间由页面人数组成</option>
+	      </select>
+	    </div>
+	  </div>
+	  <div class="form-group" ng-if="options.subtitle_type == 'single'">
+	    <label for="bbb-input-subtitle" class="col-xs-3 col-md-2 control-label">副标题 *</label>
+	    <div class="col-xs-9 col-md-10">
+	      <input type="text" class="form-control" id="bbb-input-subtitle" ng-model="options.subtitle" placeholder="请输入副标题" required>
+	    </div>
+	  </div>
+	  <div class="form-group" ng-if="options.subtitle_type == 'complex'">
+	    <label class="col-xs-3 col-md-2 control-label">副标题前后缀 *</label>
+	    <div class="col-sm-5">
+	      <input type="text" class="form-control" ng-model="options.subtitle_prefix" placeholder="请输入副标题前缀" required>
+	    </div>
+	    <div class="col-sm-5">
+	      <input type="text" class="form-control" ng-model="options.subtitle_suffix" placeholder="请输入副标题后缀" required>
+	    </div>
+	  </div>
+	  <div class="form-group">
+	    <label for="bbb-input-bg-color" class="col-xs-3 col-md-2 control-label">按钮背景色</label>
+	    <div class="col-xs-9 col-md-10">
+	      <color-picker color="options.bg_color" placeholder="请输入按钮背景色,默认为红色渐变"></color-picker>
+	    </div>
+	  </div>
+	  <div class="form-group">
+	    <label for="bbb-input-title-color" class="col-xs-3 col-md-2 control-label">文案颜色</label>
+	    <div class="col-xs-9 col-md-10">
+	      <color-picker color="options.text_color" placeholder="请输入标题颜色值,默认为#FFFFFF" defaultcolor="#ffffff"></color-picker>
+	    </div>
+	  </div>
+	  <div class="form-group">
+	    <div class="col-sm-offset-2 col-md-10">
+	      <div class="checkbox">
+	        <label>
+	          <input type="checkbox" ng-model="options.delay_show"> 按钮首屏过后延迟出现
+	        </label>
+	      </div>
+	    </div>
+	  </div>
+	</div>
+</div>

@@ -1,0 +1,8 @@
+<div class="gallery-theme swiper-container" id="themeSwiperContainer">
+	<ul class="swiper-wrapper">
+		<li ng-repeat="item in ctrl.theme" class="swiper-slide" ng-click="linkToTheme(item.theme_id, item.id)">
+			<img data-src="{{item.poster}}" class="swiper-lazy">
+		</li>
+	</ul>
+	<div class="swiper-pagination"></div>
+</div>
