@@ -1,3 +1,5 @@
+### CMS项目安装和启动
+
 # CMS项目安装和启动
 
 ## 初始化数据库
@@ -30,9 +32,14 @@ nodemon server/server.js
 grunt build
 ```
 
-### 测试环境 -- 
+### 测试环境 --
 ```
 grunt build:test
+```
+
+### 生产环境 --
+```
+grunt build:production
 ```
 
 
