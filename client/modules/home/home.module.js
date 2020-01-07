@@ -2,13 +2,13 @@
 
 
 angular.module('exe.cms.home', ['ui.router'])
-  .config(function($stateProvider) {
+  .config(function ($stateProvider) {
 
     $stateProvider
       .state('cms.home', {
         url: '/home',
         data: {
-          title: 'EXE CMS'
+          title: 'CMS'
         },
         views: {
           "content@cms": {

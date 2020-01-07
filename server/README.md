@@ -1,5 +1,3 @@
-# EXE 管理界面项目
-
 # CMS项目安装和启动
 
 ## 初始化数据库
@@ -32,12 +30,12 @@ nodemon server/server.js
 grunt build
 ```
 
-### 测试环境 -- cms.loveqiche.com
+### 测试环境 --
 ```
 grunt build:test
 ```
 
-### 生产环境 -- cms.jingfree.com
+### 生产环境 -- 
 ```
 grunt build:production
 ```
@@ -51,29 +49,26 @@ client/app/bower_components/pulpload/.bower.json文件里添加："main": "js/pl
 
 
 # client中
-## EXEAdmin
 通用代码，包括布局，和通用组件
 
-## eps EXE Promotion System -- EXE推广平台
 
 ### 开发
 ```
-gulp dev:eps //gulp dev:<appname>
+gulp dev:cms //gulp dev:<appname>
 ```
 
 ### 打包
 ```
-gulp build:eps:prod //build:<appname>:<env>
+gulp build:cms:prod //build:<appname>:<env>
 ```
 
-## epsadmin EXE Promotion System Admin-- EXE推广平台后台
 
 ### 开发
 ```
-gulp dev:epsadmin //gulp dev:<appname>
+gulp dev:cmsadmin //gulp dev:<appname>
 ```
 
 ### 打包
 ```
-gulp build:epsadmin:prod //build:<appname>:<env>
+gulp build:cmsadmin:prod //build:<appname>:<env>
 ```
