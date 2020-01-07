@@ -1,0 +1,16 @@
+{
+  "name": "node-cms",
+  "version": "1.0.0",
+  "main": "index.js",
+  "repository": "https://github.com/peng92055/node-cms",
+  "author": "pengyajun <pyj92055@163.com>",
+  "scripts": {
+    "dev": "vuepress dev ./docs",
+    "build": "vuepress build ./docs",
+    "deploy": "sh build/deploy.sh"
+  },
+  "license": "MIT",
+  "devDependencies": {
+    "vuepress": "^1.2.0"
+  }
+}
